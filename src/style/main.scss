@@ -1,0 +1,81 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  --gray-10: #FFFFFF;
+  --gray-20: #FBFBFB;
+  --gray-30: #EBEBEB;
+  --gray-50: #B5B5B5;
+  --gray-60: #8a8a8a;
+  --gray-70: #494949;
+  --gray-80: #282828;
+  --green-base: #9ECA74;
+  --pink-light: #FFD1DC;
+  --pink-base: #FB688A;
+  --orange-light: #FBF5ED;
+  --orange-base: #FF9800;
+  --font-xs: 10px;
+  --font-sm: 12px;
+  --font-base: 14px;
+  --font-m: 16px;
+  --font-l: 20px;
+  --font-lg: 24px;
+  --z-normal: 100;
+  --z-navigation: 300;
+  --z-overlay: 400;
+  --z-popup: 500;
+  font-size: var(--font-base);
+  color: var(--gray-80);
+  line-height: 1;
+  padding-bottom: 91px;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: var(--gray-80);
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+  outline: none;
+}
