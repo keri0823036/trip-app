@@ -5,6 +5,7 @@
         <div
           :class="{ 'spots__type-filter__option--active': isSelectedAll }"
           class="spots__type-filter__option"
+          key="all"
           @click="clickAll"
         >
           <label class="option__text">全部</label>
@@ -61,7 +62,7 @@
       </div>
     </template>
     <template v-else>
-      <div>
+      <div class="spots__loading">
         <Loading />
       </div>
     </template>
@@ -223,6 +224,13 @@ export default {
         }
       }
     }
+  }
+
+  &__loading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 100px 0;
   }
 }
 </style>
