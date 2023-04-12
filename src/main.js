@@ -5,7 +5,7 @@ import VueRouter from 'vue-router'
 import routes from '@/routes/index'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import { getSchedule, getSpots } from '@/api/getSheetData'
+import { getSchedule, getSpots, getInfo } from '@/api/getSheetData'
 
 import './style/main.scss'
 
@@ -22,25 +22,38 @@ const router = new VueRouter({
 const store = new Vuex.Store({
   state: {
     schedule: {},
-    spots: []
+    spots: [],
+    info: {}
+  },
+  getters: {
+    schedule: (state) => state.schedule,
+    spots: (state) => state.spots,
+    info: (state) => state.info
   },
   mutations: {
-    updateSchedule (state, schedule) {
+    setSchedule (state, schedule) {
       state.schedule = schedule
     },
-    updateSpots (state, spots) {
+    setSpots (state, spots) {
       state.spots = spots
+    },
+    setInfo (state, info) {
+      state.info = info
     }
   },
   actions: {
     async getScheduleData({ commit }) {
       const schedule = await getSchedule()
-      await commit("updateSchedule", schedule)
+      await commit("setSchedule", schedule)
     },
     async getSpotsData({ commit }) {
       const spots = await getSpots()
-      await commit("updateSpots", spots)
-    }
+      await commit("setSpots", spots)
+    },
+    async getInfoData({ commit }) {
+      const info = await getInfo()
+      await commit("setInfo", info)
+    },
   }
 })
 

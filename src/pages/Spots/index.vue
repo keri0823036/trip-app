@@ -25,7 +25,7 @@ export default {
   methods: {
     async init() {
       await this.$store.dispatch('getSpotsData')
-      this.spotsData = this.$store.state.spots
+      this.spotsData = this.$store.getters.spots
     }
   }
 }

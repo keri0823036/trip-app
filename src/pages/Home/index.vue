@@ -28,7 +28,7 @@ export default {
   methods: {
     async init() {
       await this.$store.dispatch('getScheduleData')
-      this.scheduleData = this.$store.state.schedule
+      this.scheduleData = this.$store.getters.schedule
     },
     pickDay(val) {
       this.pickedDay = val
