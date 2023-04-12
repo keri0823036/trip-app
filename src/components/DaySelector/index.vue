@@ -1,37 +1,50 @@
 <template>
 	<div class="day-selector">
-		<div
-			:class="{ 'day-selector__option--active': picked === 'DAY-1' }"
-			class="day-selector__option"
-			@click="picked = 'DAY-1'"
-		>
-			<input v-model="picked" type="radio" id="DAY-1" value="DAY-1" >
-			<label for="DAY-1">DAY-1</label>
-		</div>
-		<div
-			:class="{ 'day-selector__option--active': picked === 'DAY-2' }"
-			class="day-selector__option"
-			@click="picked = 'DAY-2'"
-		>
-			<input v-model="picked" type="radio" id="DAY-2" value="DAY-2" >
-			<label for="DAY-2" class="day-selector__option__text">DAY-2</label>
-		</div>
+		<template v-for="option in options">
+			<div
+				:key="`option-${option}`"
+				:class="{ 'day-selector__option--active': picked === option }"
+				class="day-selector__option"
+				@click="picked = option"
+			>
+				<input v-model="picked" type="radio" :id="option" :value="option" >
+				<label :for="option">{{ getOptionName(option) }}</label>
+			</div>
+		</template>
 	</div>
 </template>
 <script>
 export default {
+	props: {
+		options: {
+			require: true,
+			type: Array,
+			default: () => []
+		}
+	},
 	data() {
     return {
       picked: 'DAY-1'
     }
   },
 	watch: {
+		options:{
+			immediate: true,
+      handler(val) {
+        this.picked = val[0]
+      }
+		},
 		picked: {
       immediate: true,
       handler(val) {
         this.$emit('pick', val)
       }
     }
+	},
+	methods: {
+		getOptionName(option) {
+			return option.split("(")[0]
+		}
 	}
 }
 </script>

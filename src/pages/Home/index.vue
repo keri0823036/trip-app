@@ -1,7 +1,7 @@
 <template>
   <div id="home-page" class="home-page">
     <PageTitle />
-    <DaySelector @pick="pickDay" />
+    <DaySelector v-if="isShowDateOptions" :options="dateSelectorOptions" @pick="pickDay" />
     <Schedule :sheetName="pickedDay" :scheduleData="scheduleData" />
   </div>
 </template>
@@ -18,17 +18,26 @@ export default {
   },
   data() {
     return {
-      pickedDay: '',
-      scheduleData: {}
+      pickedDay: ''
     }
   },
   created() {
     this.init()
   },
+  computed: {
+    scheduleData() {
+      return this.$store.getters.schedule
+    },
+    dateSelectorOptions() {
+      return Object.keys(this.scheduleData)
+    },
+    isShowDateOptions() {
+      return this.dateSelectorOptions.length > 1
+    }
+  },
   methods: {
     async init() {
       await this.$store.dispatch('getScheduleData')
-      this.scheduleData = this.$store.getters.schedule
     },
     pickDay(val) {
       this.pickedDay = val
